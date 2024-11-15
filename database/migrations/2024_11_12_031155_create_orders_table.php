@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->integer('id', 10)->primary();
             $table->date('order_date');
-            $table->integer('account_id');
+            $table->string('full_name', 100);
+            $table->string('phone', 10);
+            $table->text('address');
             $table->decimal('total_price', 8, 2);
-            // Foreign key
-            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-
+            $table->string('status', 10);
             $table->timestamps();
         });
     }

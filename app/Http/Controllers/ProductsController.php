@@ -34,6 +34,7 @@ class ProductsController extends Controller
                 'stock' => 'required|numeric',
                 'origin' => 'required|string|max:50',
                 'expiry' => 'required|date',
+                'image' => 'required|text',
                 'category_id' => 'required|string|max:50',
             ]);
             $product = new Products();
@@ -44,6 +45,7 @@ class ProductsController extends Controller
             $product->stock = $request->stock;
             $product->origin = $request->origin;
             $product->expiry = $request->expiry;
+            $product->image = $request->image;
             $product->category_id = $request->category_id;
             $product->save();
             return response()->json($product, 201);
@@ -67,6 +69,7 @@ class ProductsController extends Controller
                 'stock' => 'required|numeric',
                 'origin' => 'required|string|max:50',
                 'expiry' => 'required|date',
+                'image' => 'required|text',
                 'category_id' => 'required|string|max:50',
             ]);
 
@@ -80,6 +83,7 @@ class ProductsController extends Controller
             $product->stock = $request->stock;
             $product->origin = $request->origin;
             $product->expiry = $request->expiry;
+            $product->image = $request->image;
             $product->category_id = $request->category_id;
 
             // Lưu bản ghi sau khi cập nhật
@@ -121,7 +125,7 @@ class ProductsController extends Controller
         $products = Products::where('name', 'like', '%' . $name . '%')
             ->orWhere('other_name', 'like', '%' . $name . '%')
             ->orWhere('scientific_name', 'like', '%' . $name . '%')
-            ->select('name', 'other_name', 'scientific_name', 'price', 'stock', 'origin', 'expiry', 'category_id')
+            ->select('name', 'other_name', 'scientific_name', 'price', 'stock', 'origin', 'expiry','image', 'category_id')
             ->get();
             //dd($name);
         // Trả về kết quả dưới dạng JSON

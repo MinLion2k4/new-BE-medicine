@@ -15,10 +15,12 @@ class OrderController extends Controller
     public function store(Request $request)
     {
        $request -> validate([
-           'order_date' => 'required',
-           'total_price' => 'required',
-           'status' => 'required',
-           'account_id' => 'required',
+        'order_date' => 'required',
+        'full_name' => 'required',
+        'phone' => 'required',
+        'address' => 'required',
+        'total_price' => 'required',
+        'status' => 'required',
        ]);
         $order = Order::create($request->all());
         return response()->json($order,201);
@@ -35,14 +37,18 @@ class OrderController extends Controller
         $order = Order::find($id);
         $request -> validate([
             'order_date' => 'required',
+            'full_name' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
             'total_price' => 'required',
             'status' => 'required',
-            'account_id' => 'required',
         ]);
         $order->order_date = $request->order_date;
+        $order->full_name = $request->full_name;
+        $order->phone = $request->phone;
+        $order->address = $request->address;
         $order->total_price = $request->total_price;
         $order->status = $request->status;
-        $order->account_id = $request->account_id;
         return response()->json($order,200);
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\TypeProductsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrdersDetailController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -58,3 +59,11 @@ Route::post('/orders/create', [OrderController::class, 'store']);
 Route::patch('/orders/update/{id}',[OrderController::class,'update']);
 Route::delete('/orders/delete/{id}',[OrderController::class,'destroy']);
 //END ORDERS//
+//-------------------------------------------//
+//ORDERSDETAIL//
+Route::get('/orderdetails', [OrdersDetailController::class, 'index']);
+Route::get('/orderdetails/{id}', [OrdersDetailController::class, 'show']);
+Route::post('/orderdetails/create', [OrdersDetailController::class, 'create']);
+Route::patch('/orderdetails/update/{id}',[OrdersDetailController::class,'edit']);
+Route::delete('/orderdetails/delete/{id}',[OrdersDetailController::class,'destroy']);
+//END ORDERSDETAIL//

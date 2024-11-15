@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('stock')->nullable();
             $table->string('origin', 255)->nullable();
             $table->date('expiry')->nullable();
+            $table->text('image')->nullable();
             $table->string('category_id', 10)->nullable();
             $table->foreign('category_id')->references('id')->on('type_products')->onDelete('set null');
             $table->timestamps();
