@@ -39,7 +39,7 @@ class AccountsController extends Controller
             $account = new Accounts();
             $account->full_name = $request->full_name;
             $account->email = $request->email;
-            $account->password = bcrypt($request->password); // Mã hóa mật khẩu
+            $account->password = $request->password; // Mã hóa mật khẩu
             $account->phone = $request->phone;
             $account->status = $request->status;
             $account->role = $request->role;
@@ -67,7 +67,7 @@ class AccountsController extends Controller
             ]);
             $account->full_name = $request->full_name;
             $account->email = $request->email;
-            $account->password = bcrypt($request->password); // Mã hóa mật khẩu
+            $account->password = $request->password; // Mã hóa mật khẩu
             $account->phone = $request->phone;
             $account->status = $request->status;
             $account->role = $request->role;
