@@ -34,7 +34,7 @@ class ProductsController extends Controller
                 'stock' => 'required|numeric',
                 'origin' => 'required|string|max:50',
                 'expiry' => 'required|date',
-                'image' => 'required|text',
+                'image' => 'required|string',
                 'category_id' => 'required|string|max:50',
             ]);
             $product = new Products();
@@ -87,6 +87,31 @@ class ProductsController extends Controller
             $product->category_id = $request->category_id;
 
             // Lưu bản ghi sau khi cập nhật
+            $product->save();
+
+            return response()->json([
+                'message' => 'Product updated successfully'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error: ' . $e->getMessage()
+            ], 400);
+        }
+    }
+
+    // CHANGE STOCK
+    public function updateStock(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'stock' => 'required|numeric',
+            ]);
+
+            $product = Products::findOrFail($id);
+
+            // Cập nhật các thuộc tính
+            $product->stock = $request->stock;
+
             $product->save();
 
             return response()->json([

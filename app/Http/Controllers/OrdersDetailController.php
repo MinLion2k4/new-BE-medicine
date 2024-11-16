@@ -18,24 +18,24 @@ class OrdersDetailController extends Controller
         $orderdetails = OrderDetail::where('order_id', $id)->get();
         return response()->json($orderdetails);
     }
-    public function create($request)
-    {
-        $request->validate([
-            'order_id' => 'required',
-            'product_id' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
-        ]);
-        $orderdetail = OrderDetail::create($request->all());
-        return response()->json($orderdetail,200);
-    }  
+    public function create(Request $request)
+{
+    $request->validate([
+        'order_id' => 'required',
+        'product_id' => 'required',
+        'quantity' => 'required'
+    ]);
+
+    $orderdetail = OrderDetail::create($request->all());
+
+    return response()->json($orderdetail, 200);
+}
     public function edit($request,$id)
     {
         $request->validate([
             'order_id' => 'required',
             'product_id' => 'required',
-            'quantity' => 'required',
-            'price' => 'required',
+            'quantity' => 'required'
         ]);
         $orderdetail = OrderDetail::find($id);
         $orderdetail->update($request->all());

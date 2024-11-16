@@ -10,7 +10,7 @@ class OrderDetail extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['order_id','product_id','quantity', 'price'];
+    protected $fillable = ['order_id','product_id','quantity'];
 
     protected $hidden = [
         'created_at',

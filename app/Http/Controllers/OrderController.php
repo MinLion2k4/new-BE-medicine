@@ -52,11 +52,22 @@ class OrderController extends Controller
         return response()->json($order,200);
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $request -> validate([
+            'status' => 'required',
+        ]);
+        $order->status = $request->status;
+        $order->save();
+        return response()->json($order,200);
+    }
+
     public function destroy($id)
     {
         $order = Order::find($id);
         $order->delete();
         return response()->json('deleted');
     }
-    
+
 }

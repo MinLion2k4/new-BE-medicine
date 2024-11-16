@@ -21,7 +21,7 @@ Route::patch('/accounts/update/{id}',[AccountsController::class, 'update']);
 
 Route::delete('/accounts/delete/{id}',[AccountsController::class, 'delete']);
 
-Route::get('/login', [AccountsController::class, 'login']);
+Route::post('/login', [AccountsController::class, 'login']);
 //END ACCOUNTS//
 //-------------------------------------------//
 //TYPES//
@@ -45,6 +45,8 @@ Route::post('/products/create', [ProductsController::class, 'store']);
 
 Route::patch('/products/update/{id}',[ProductsController::class,'update']);
 
+Route::patch('/products/update-stock/{id}',[ProductsController::class,'updateStock']);
+
 Route::delete('/products/delete/{id}',[ProductsController::class,'delete']);
 
 Route::get('/search', [ProductsController::class, 'searchByName']);
@@ -57,6 +59,8 @@ Route::get('/orders', [OrderController::class, 'index']);
 Route::get('/orders/{id}', [OrderController::class, 'show']);
 Route::post('/orders/create', [OrderController::class, 'store']);
 Route::patch('/orders/update/{id}',[OrderController::class,'update']);
+Route::patch('/orders/update-status/{id}',[OrderController::class,'updateStatus']);
+
 Route::delete('/orders/delete/{id}',[OrderController::class,'destroy']);
 //END ORDERS//
 //-------------------------------------------//
