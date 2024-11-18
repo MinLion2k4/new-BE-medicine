@@ -17,6 +17,7 @@ class OrderController extends Controller
        $request -> validate([
         'order_date' => 'required',
         'full_name' => 'required',
+        'email' => 'required',
         'phone' => 'required',
         'address' => 'required',
         'total_price' => 'required',

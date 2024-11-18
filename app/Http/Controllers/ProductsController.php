@@ -69,7 +69,7 @@ class ProductsController extends Controller
                 'stock' => 'required|numeric',
                 'origin' => 'required|string|max:50',
                 'expiry' => 'required|date',
-                'image' => 'required|text',
+                'image' => 'required|string',
                 'category_id' => 'required|string|max:50',
             ]);
 

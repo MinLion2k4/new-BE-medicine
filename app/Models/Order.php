@@ -10,13 +10,13 @@ class Order extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['order_date','full_name','phone','address', 'total_price', 'status'];
+    protected $fillable = ['order_date','full_name','email','phone','address','total_price','status'];
 
     protected $hidden = [
         'created_at',
         'updated_at',
     ];
 
-    
+
 
 }
