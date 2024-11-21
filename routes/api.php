@@ -7,6 +7,7 @@ use App\Http\Controllers\TypeProductsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrdersDetailController;
+use App\Http\Controllers\WareHouseController;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
@@ -71,3 +72,7 @@ Route::post('/orderdetails/create', [OrdersDetailController::class, 'create']);
 Route::patch('/orderdetails/update/{id}',[OrdersDetailController::class,'edit']);
 Route::delete('/orderdetails/delete/{id}',[OrdersDetailController::class,'destroy']);
 //END ORDERSDETAIL//
+//-------------------------------------------//
+//WareHouse//
+Route::get('/wares', [WareHouseController::class, 'index']);
+Route::post('/wares/create', [WareHouseController::class, 'shore']);
